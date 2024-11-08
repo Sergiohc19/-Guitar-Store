@@ -1,5 +1,7 @@
-function Guitar() {
+function Guitar(props) {
 
+    console.log(props.price)
+    console.log(props.auth)
 
 
 return (
@@ -20,7 +22,7 @@ return (
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit
                 quae labore odit magnam in autem nesciunt, amet deserunt
               </p>
-              <p className="fw-black text-primary fs-3">$299</p>
+              <p className="fw-black text-primary fs-3">${props.price}</p>
               <button type="button" className="btn btn-dark w-100">
                 Agregar al Carrito
               </button>

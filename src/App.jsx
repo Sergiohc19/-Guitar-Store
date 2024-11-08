@@ -1,22 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Guitar from "./components/Guitar";
 import Header from "./components/Header";
+import { db } from "./data/db";
 
 
 function App() {
-  const [auth, setAuth] = useState(false)
-// useEffect
-useEffect(() => {
-  if(auth) {
-  console.log("Auth")
-  }
-
-},[auth])
-
-
-setTimeout(() => {
-  setAuth(true)
-}, 3000);
+  const [data, setData] = useState(db)
+  
 
 
   return (
@@ -27,18 +17,12 @@ setTimeout(() => {
         <h2 className="text-center">Nuestra Colección</h2>
 
         <div className="row mt-5">
-          <Guitar />
-          <Guitar />
-          <Guitar />
-          <Guitar />
-          <Guitar />
-          <Guitar />
-          <Guitar />
-          <Guitar />
-          <Guitar />
-          <Guitar />
-          <Guitar />
-          <Guitar />
+
+          {data.map(() =>  (
+              <Guitar />
+          ))}
+      
+        
 
         </div>
       </main>

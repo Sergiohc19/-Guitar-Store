@@ -1,7 +1,6 @@
-function Guitar(props) {
+function Guitar({guitar}) {
 
-    console.log(props.price)
-    console.log(props.auth)
+    
 
 
 return (
@@ -16,13 +15,13 @@ return (
             </div>
             <div className="col-8">
               <h3 className="text-black fs-4 fw-bold text-uppercase">
-                Lukather
+                {guitar.name}
               </h3>
               <p>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit
                 quae labore odit magnam in autem nesciunt, amet deserunt
               </p>
-              <p className="fw-black text-primary fs-3">${props.price}</p>
+              <p className="fw-black text-primary fs-3">$</p>
               <button type="button" className="btn btn-dark w-100">
                 Agregar al Carrito
               </button>

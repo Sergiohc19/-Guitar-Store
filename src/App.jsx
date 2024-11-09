@@ -18,14 +18,9 @@ function App() {
 
         <div className="row mt-5">
 
-          {data.map(() =>  (
+          {data.map((guitar) =>  (
               <Guitar 
-              
-              price={100}
-              auth={true}
-              
-              
-              
+                guitar={guitar}  
               />
           ))}
       

@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 
-function Guitar({ guitar }) {
+function Guitar({ guitar, setCart }) {
   // Destructuramos las propiedades del objeto "guitar"
   const { id, name, image, description, price } = guitar;
 
-  const handleClick = (id) => {
-    console.log("Diste Click...", id)
-  }
+  // const handleClick = (guitar) => {
+  //   setCart([...cart, guitar ])
+  // }
 
 
 
@@ -30,7 +30,7 @@ function Guitar({ guitar }) {
           <button 
           type="button"
           className="btn btn-dark w-100"
-          onClick= {() => handleClick(guitar)}
+          onClick= {() => setCart(prevCart => [...prevCart, guitar])}
 
           
           > Agregar al Carrito
@@ -43,6 +43,7 @@ function Guitar({ guitar }) {
 
 // Validación de PropTypes para asegurar que recibimos los datos correctos
 Guitar.propTypes = {
+
   guitar: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,

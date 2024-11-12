@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 
+//  Componente Guitar
 function Guitar({ guitar, addToCart }) {
   // Destructuramos las propiedades del objeto "guitar"
   const { id, name, image, description, price } = guitar;

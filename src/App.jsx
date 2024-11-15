@@ -3,6 +3,7 @@ import Guitar from "./components/Guitar";
 import Header from "./components/Header";
 import { db } from "./data/db";
 
+// Componente App, es el componente renderizado
 function App() {
   const [data, setData] = useState(db);
   const [cart, setCart] = useState([])

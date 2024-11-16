@@ -6,7 +6,7 @@ import { db } from "./data/db";
 // Componente App, es el componente renderizado
 function App() {
   const [data, setData] = useState(db);
-  const [cart, setCart] = useState([])
+  const [cart, setCart] = useState([]);
 
   function addToCart(item) {
 

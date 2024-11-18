@@ -1,5 +1,5 @@
 // Componente Header
-function Header() {
+function Header({cart}) {
   
   return (
 
@@ -36,21 +36,22 @@ function Header() {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                      {cart.map( guitar => (
+                      <tr key={guitar.id} >
                         <td>
                           <img
                             className="img-fluid"
-                            src="./public/img/guitarra_02.jpg"
+                            src={`/img/${guitar.image}.jpg`}
                             alt="imagen guitarra"
                           />
                         </td>
-                        <td>SRV</td>
-                        <td className="fw-bold">$299</td>
+                        <td>{guitar.name}</td>
+                        <td className="fw-bold">${guitar.price}</td>
                         <td className="flex align-items-start gap-4">
                           <button type="button" className="btn btn-dark">
                             -
                           </button>
-                          1
+                            {guitar.quantity}
                           <button type="button" className="btn btn-dark">
                             +
                           </button>
@@ -61,11 +62,12 @@ function Header() {
                           </button>
                         </td>
                       </tr>
+                       ))}
                     </tbody>
                   </table>
 
                   <p className="text-end">
-                    Total pagar: <span className="fw-bold">$899</span>
+                    Total pagar: <span className="fw-bold">${}</span>
                   </p>
                   <button className="btn btn-dark w-100 mt-3 p-2">
                     Vaciar Carrito

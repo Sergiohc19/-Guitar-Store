@@ -20,9 +20,6 @@ function App() {
       setCart([...cart, item])
     }
   }
-
-
-
   return (
     <>
       <Header

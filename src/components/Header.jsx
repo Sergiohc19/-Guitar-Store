@@ -1,13 +1,34 @@
 import {useMemo} from 'react'
 
 // Componente Header
-function Header({ cart, removeFromCart }) {
+function Header({ cart, removeFromCart, increaseQuantity, decrementQuantity, message }) {
   // State Derivado
   const isEmpty = useMemo( () => cart.length === 0, [cart])
   const cartTotal = useMemo( () => cart.reduce( (total, item ) => total + (item.quantity * item.price), 0), [cart])
 
   return (
     <header className="py-5 header">
+      {message && (
+      <div style={{
+        position: "fixed",
+        top: "10px",
+        left: "50%",
+        transform: "translateX(-50%)",
+        backgroundColor: "#ffe6e6",
+        color: "red",
+        border: "1px solid red",
+        padding: "10px 20px",
+        borderRadius: "5px",
+        fontWeight: "bold",
+        zIndex: 1000,
+        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+      }}
+      >
+        {message}
+      </div>
+      )}
+
+
       <div className="container-xl">
         <div className="row justify-content-center justify-content-md-between">
           <div className="col-8 col-md-3">
@@ -55,11 +76,13 @@ function Header({ cart, removeFromCart }) {
                             <td>{guitar.name}</td>
                             <td className="fw-bold">${guitar.price}</td>
                             <td className="flex align-items-start gap-4">
-                              <button type="button" className="btn btn-dark">
+                              <button type="button" className="btn btn-dark" onClick={() => decrementQuantity(guitar.id)} >
                                 -
                               </button>
                               {guitar.quantity}
-                              <button type="button" className="btn btn-dark">
+                              <button type="button" className="btn btn-dark" onClick={() => increaseQuantity(guitar.id)} 
+                              
+                              >
                                 +
                               </button>
                             </td>

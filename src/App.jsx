@@ -21,7 +21,7 @@ function App() {
       item.quantity = 1;
       setCart([...cart, item]);
       setMessage(`El producto ${item.name} se añadio al carrito`)
-      cleanMessage()
+      clearMessage()
     }
   }
   // Eliminar productos del carrito
@@ -35,7 +35,7 @@ function App() {
         const quantityMin = Math.min(item.quantity + 1, 5);
         if (quantityMin === 5) {
           setMessage(`No puedes agregar más de 5 unidades de ${item.name}`);
-          cleanMessage();
+          clearMessage();
         } else {
           setMessage("");
         }
@@ -59,11 +59,18 @@ function App() {
   }
 
   // Duración del mensaje y limpieza
-  const cleanMessage = () => {
+  const clearMessage = () => {
     setTimeout(() => {
       setMessage("");
     }, 3000);
   };
+
+
+// Limpiar el carrito
+function clearCart() {
+  setCart([])
+}
+
   return (
     <>
       <Header
@@ -71,6 +78,7 @@ function App() {
         removeFromCart={removeFromCart}
         increaseQuantity={increaseQuantity}
         decrementQuantity={decrementQuantity}
+        clearCart={clearCart}
         message={message}
       />
 

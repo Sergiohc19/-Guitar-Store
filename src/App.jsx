@@ -1,13 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Guitar from "./components/Guitar";
 import Header from "./components/Header";
 import { db } from "./data/db";
 
 // Componente App, es el componente renderizado
 function App() {
+
+  const initialCart = () => {
+    const localStorageCart = localStorage.getItem("cart")
+    return localStorageCart ? JSON.parse(localStorageCart) : []
+  }
+
+
   const [data, setData] = useState(db);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([initialCart]);
   const [message, setMessage] = useState("");
+
+
+useEffect(() => {
+  localStorage.setItem("cart", JSON.stringify(cart))
+}, [cart])
+
+
   //  Añadir productos al carrito
   function addToCart(item) {
     const itemExists = cart.findIndex((guitar) => guitar.id === item.id);
@@ -67,9 +81,10 @@ function App() {
 
 
 // Limpiar el carrito
-function clearCart() {
+function clearCart(e) {
   setCart([])
 }
+
 
   return (
     <>

@@ -9,7 +9,7 @@ function App() {
   const initialCart = () => {
     const localStorageCart = localStorage.getItem("cart")
     return localStorageCart ? JSON.parse(localStorageCart) : []
-  }
+  };
 
 
   const [data, setData] = useState(db);

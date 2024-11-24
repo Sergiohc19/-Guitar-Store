@@ -7,6 +7,7 @@ function Header({ cart, removeFromCart, increaseQuantity, decrementQuantity, mes
   const cartTotal = useMemo( () => cart.reduce( (total, item ) => total + (item.quantity * item.price), 0), [cart])
 
   return (
+    
     <header className="py-5 header">
       {message && (
       <div style={{
@@ -35,7 +36,7 @@ function Header({ cart, removeFromCart, increaseQuantity, decrementQuantity, mes
             <a href="index.html">
               <img
                 className="img-fluid"
-                src="./public/img/logo.svg"
+                src="/img/logo.svg"
                 alt="imagen logo"
               />
             </a>
@@ -44,7 +45,7 @@ function Header({ cart, removeFromCart, increaseQuantity, decrementQuantity, mes
             <div className="carrito">
               <img
                 className="img-fluid"
-                src="./public/img/carrito.png"
+                src="/img/carrito.png"
                 alt="imagen carrito"
               />
 

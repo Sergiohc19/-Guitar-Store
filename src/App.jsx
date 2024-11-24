@@ -11,31 +11,33 @@ function App() {
     return localStorageCart ? JSON.parse(localStorageCart) : []
   };
 
-
   const [data, setData] = useState(db);
-  const [cart, setCart] = useState([initialCart]);
+  const [cart, setCart] = useState(initialCart);
   const [message, setMessage] = useState("");
 
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
-useEffect(() => {
-  localStorage.setItem("cart", JSON.stringify(cart))
-}, [cart])
 
+  const minItem = 1;
+  const maxItem = 5;
 
   //  Añadir productos al carrito
   function addToCart(item) {
     const itemExists = cart.findIndex((guitar) => guitar.id === item.id);
 
-    if (itemExists >= 0) { // Existe en el carrito
-      if(cart[itemExists].quantity >= quantityMin) return 
+    if (itemExists >= 0) {
+      // Existe en el carrito
+      if (cart[itemExists].quantity >= maxItem) return
       const updateCart = [...cart];
-      updateCart[itemExists].quantity++;
+      updateCart[itemExists].quantity++
       setCart(updateCart);
     } else {
-      item.quantity = 1;
+      item.quantity = 1
       setCart([...cart, item]);
-      setMessage(`El producto ${item.name} se añadio al carrito`)
-      clearMessage()
+      setMessage(`El producto ${item.name} se añadio al carrito`);
+      clearMessage();
     }
   }
   // Eliminar productos del carrito
@@ -45,31 +47,30 @@ useEffect(() => {
   // Incremento de cantidades
   function increaseQuantity(id) {
     const updateCart = cart.map((item) => {
-      if (item.id === id) {
-        const quantityMin = Math.min(item.quantity + 1, 5);
-        if (quantityMin === 5) {
-          setMessage(`No puedes agregar más de 5 unidades de ${item.name}`);
-          clearMessage();
-        } else {
-          setMessage("");
-        }
-        return { ...item, quantity: quantityMin };
+      if (item.id === id && item.quantity < maxItem) {
+        return {
+          ...item,
+          quantity: item.quantity + 1
+        };
+      } else if (item.id === id && item.quantity === maxItem) {
+        setMessage(`You cannot add more than ${maxItem} units of ${item.name}`);
+        clearMessage();
+      }
+      return item;
+    });
+  
+    setCart(updateCart);
+  }
+  
+  // Decremento de cantidades
+  function decrementQuantity(id) {
+    const updateCart = cart.map((item) => {
+      if (item.id === id && item.quantity > minItem) {
+        return { ...item, quantity: item.quantity - 1 };
       }
       return item;
     });
     setCart(updateCart);
-  }
-  // Decremento de cantidades
-  function decrementQuantity(id) {
-    const decrementItem = cart.map((item) => {
-      if (item.id === id) {
-        const quantityMax = Math.max(item.quantity - 1, 1);
-
-        return { ...item, quantity: quantityMax };
-      }
-      return item;
-    });
-    setCart(decrementItem);
   }
 
   // Duración del mensaje y limpieza
@@ -79,12 +80,10 @@ useEffect(() => {
     }, 3000);
   };
 
-
-// Limpiar el carrito
-function clearCart(e) {
-  setCart([])
-}
-
+  // Limpiar el carrito
+  function clearCart(e) {
+    setCart([]);
+  }
 
   return (
     <>

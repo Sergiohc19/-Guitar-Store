@@ -89,6 +89,7 @@ export const useCart = () => {
         addToCart,
         removeFromCart,
         clearCart,
+        clearMessage,
         increaseQuantity,
         decrementQuantity,
         message

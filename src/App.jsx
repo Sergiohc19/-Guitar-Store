@@ -5,10 +5,8 @@ import { useCart } from "./hooks/useCart"
 // Componente App, es el componente renderizado
 function App() {
 
-const { data, cart, addToCart, removeFromCart, clearCart, increaseQuantity, decrementQuantity } = useCart()
+    const { data, cart, addToCart, removeFromCart, clearCart, increaseQuantity, decrementQuantity, message } = useCart()
 
-
-  
 
   return (
     <>

@@ -1,10 +1,5 @@
-import {useMemo} from 'react'
-
 // Componente Header
-function Header({ cart, removeFromCart, increaseQuantity, decrementQuantity, message, clearCart }) {
-  // State Derivado
-  const isEmpty = useMemo( () => cart.length === 0, [cart])
-  const cartTotal = useMemo( () => cart.reduce( (total, item ) => total + (item.quantity * item.price), 0), [cart])
+function Header({ cart, removeFromCart, increaseQuantity, decrementQuantity, message, clearCart, isEmpty, cartTotal }) {
 
   return (
     
@@ -15,9 +10,9 @@ function Header({ cart, removeFromCart, increaseQuantity, decrementQuantity, mes
         top: "10px",
         left: "50%",
         transform: "translateX(-50%)",
-        backgroundColor: "#ffe6e6",
-        color: "red",
-        border: "1px solid red",
+        backgroundColor: "#008440",
+        color: "white",
+        border: "1px solid #00A550",
         padding: "10px 20px",
         borderRadius: "5px",
         fontWeight: "bold",

@@ -79,7 +79,7 @@ export const useCart = () => {
       };
     
       // Limpiar el carrito
-      function clearCart(e) {
+      function clearCart() {
         setCart([]);
       }
 

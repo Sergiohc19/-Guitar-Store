@@ -1,6 +1,5 @@
 import Guitar from "./components/Guitar";
 import Header from "./components/Header";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { useCart } from "./hooks/useCart"
 
 // Componente App, es el componente renderizado
@@ -21,7 +20,7 @@ function App() {
         isEmpty={isEmpty}
         cartTotal={cartTotal}
       />
-      <SpeedInsights/>
+      
       
 
       <main className="container-xl mt-5">

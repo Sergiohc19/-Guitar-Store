@@ -1,5 +1,6 @@
 import Guitar from "./components/Guitar";
 import Header from "./components/Header";
+import RootLayout from "./components/RootLayout";
 import { useCart } from "./hooks/useCart"
 
 // Componente App, es el componente renderizado
@@ -20,6 +21,8 @@ function App() {
         isEmpty={isEmpty}
         cartTotal={cartTotal}
       />
+      <RootLayout/>
+      
 
       <main className="container-xl mt-5">
         <h2 className="text-center">Nuestra Colección</h2>

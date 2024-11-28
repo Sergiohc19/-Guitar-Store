@@ -51,7 +51,7 @@ export const useCart = () => {
               quantity: item.quantity + 1
             };
           } else if (item.id === id && item.quantity === maxItem) {
-            setMessage(`You cannot add more than ${maxItem} units of ${item.name}`);
+            setMessage(`No puedes añadir más de ${maxItem} unidades de ${item.name}`);
             clearMessage();
           }
           return item;

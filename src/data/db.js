@@ -59,7 +59,7 @@ export const db = [
         id: 9,
         name: 'Krieger',
         image: 'guitarra_09',
-        description: ' Tono cálido y agresivo, con un diseño que refleja su legado musical.',
+        description: 'Tono cálido y agresivo, con un diseño que refleja su legado musical.',
         price: 289,
     },
     {

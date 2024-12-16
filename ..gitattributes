@@ -7,6 +7,7 @@
 *.scss linguist-language=CSS
 *.html linguist-language=HTML
 
-
+# Si quieres reducir el impacto de HTML y CSS en el análisis, puedes usar "plaintext"
+# Esto ayudará a que el código JS/TS se enfoque más en la mayoría de los casos.
 *.html linguist-language=plaintext
 *.css linguist-language=plaintext
